@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ProMe.Silo": {
+      "commandName": "Project",
+      "environmentVariables": {
+
+      }
+    }
+  }
+}
