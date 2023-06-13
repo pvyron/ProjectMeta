@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ProMe.Silo": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ConnectionStrings:TableStorage": "DefaultEndpointsProtocol=https;AccountName=vhomestorage;AccountKey=q26oYeHFfMjdZCirzJUfgPj9cn6WtLNhN2Y5FBBbM8ZbraXxhAK6PgwSO99x3mx2/1ORe/Fuqh2s+AStZQGkwg==;EndpointSuffix=core.windows.net;"
+      }
+    }
+  }
+}
