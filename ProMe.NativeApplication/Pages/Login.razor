@@ -1,0 +1,47 @@
+﻿@page "/login"
+
+<MudCard>
+    <MudForm Model="@loginModel" @ref="@form" Validation="@(loginValidator.ValidateValue)" ValidationDelay="0">
+        <MudCardContent>
+            <MudTextField @bind-Value="loginModel.Email"
+                          For="@(() => loginModel.Email)"
+                          Immediate="true"
+                          Label="Email" />
+
+            <MudTextField @bind-Value="loginModel.Password"
+                          For="@(() => loginModel.Password)"
+                          Immediate="true"
+                          Label="Password" />
+        </MudCardContent>
+        @*<MudCardContent Class="pa-0">
+
+            <MudTable Items="@model.OrderDetails" Hover="true" Breakpoint="Breakpoint.None" Dense="@true" Elevation="0">
+                <HeaderContent>
+                    <MudTh>Description</MudTh>
+                    <MudTh>Offer</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd DataLabel="Description">
+                        <MudForm Model="@context" Validation=@(orderDetailsValidator.ValidateValue)>
+                            <MudTextField Label="Enter Description"
+                            @bind-Value="context.Description"
+                                          For="(() => context.Description)" />
+                        </MudForm>
+                    </MudTd>
+                    <MudTd DataLabel="Offer">
+                        <MudForm Model="@context">
+                            <MudNumericField Label="Enter Offer"
+                            @bind-Value="context.Offer"
+                                             Validation=@(orderDetailsValidator.ValidateValue)
+                                             For="(() => context.Offer)" />
+                        </MudForm>
+                    </MudTd>
+                </RowTemplate>
+            </MudTable>
+
+        </MudCardContent>*@
+    </MudForm>
+    <MudCardActions>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" OnClick="@(async () => await OnLoginClicked())">Login</MudButton>
+    </MudCardActions>
+</MudCard>

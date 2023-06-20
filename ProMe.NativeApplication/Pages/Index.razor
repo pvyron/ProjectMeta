@@ -1,0 +1,40 @@
+﻿@page "/"
+@using System.Diagnostics;
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<PageTitle>Project Meta</PageTitle>
+
+<MudContainer Class="mt-8 px-3" MaxWidth="MaxWidth.False">
+    <MudGrid Justify="Justify.SpaceBetween">
+        <MudItem xs="6">
+            <MudContainer Class="d-flex flex-column align-center justify-center">
+                <MudButton Style="@($"max-height: 250px;min-height:150px;color:{Colors.Shades.White}")" Variant="Variant.Filled">
+                    <MudContainer Class="d-flex flex-column align-center justify-center">
+                        <MudIcon Style="@($"color:{Colors.Shades.Black}")" Icon="@Icons.Material.Sharp.PersonAdd" Size="Size.Large" />
+                        <MudText Style="@($"color:{Colors.Shades.Black}")" Typo="Typo.h5" Align="Align.Center">Προσθήκη</MudText>
+                    </MudContainer>
+                </MudButton>
+            </MudContainer>
+        </MudItem>
+        <MudItem xs="6">
+            <MudContainer Class="d-flex flex-column align-center justify-center">
+                <MudButton Style="@($"max-height: 250px;min-height:150px;color:{Colors.Shades.White}")" Variant="Variant.Filled">
+                    <MudContainer Class="d-flex flex-column align-center justify-center">
+                        <MudIcon Style="@($"color:{Colors.Shades.Black}")" Icon="@Icons.Material.Sharp.PersonSearch" Size="Size.Large" />
+                        <MudText Style="@($"color:{Colors.Shades.Black}")" Typo="Typo.h5" Align="Align.Center">Αναζήτηση</MudText>
+                    </MudContainer>
+                </MudButton>
+            </MudContainer>
+        </MudItem>
+        <MudDivider DividerType="DividerType.FullWidth" Light="false" Vertical="false" />
+        
+    </MudGrid>
+</MudContainer>
+
+@code{
+    void onClicked()
+    {
+        Debug.WriteLine("Hey");
+    }
+            }

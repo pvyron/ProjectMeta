@@ -23,7 +23,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{9A1F5B60-082
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProMe.Abstractions", "ProMe.Abstractions\ProMe.Abstractions.csproj", "{AD267ECD-8576-4D4C-982B-D2B25BA1DC0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProMe.Models", "ProMe.Models\ProMe.Models.csproj", "{33B4B992-5C14-4CC4-9556-87D7F7F94D73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProMe.Models", "ProMe.Models\ProMe.Models.csproj", "{33B4B992-5C14-4CC4-9556-87D7F7F94D73}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProMe.NativeApplication", "ProMe.NativeApplication\ProMe.NativeApplication.csproj", "{BE0B3FFC-7F24-45FC-A4EF-5C351410E245}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,12 @@ Global
 		{33B4B992-5C14-4CC4-9556-87D7F7F94D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33B4B992-5C14-4CC4-9556-87D7F7F94D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33B4B992-5C14-4CC4-9556-87D7F7F94D73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE0B3FFC-7F24-45FC-A4EF-5C351410E245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE0B3FFC-7F24-45FC-A4EF-5C351410E245}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE0B3FFC-7F24-45FC-A4EF-5C351410E245}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{BE0B3FFC-7F24-45FC-A4EF-5C351410E245}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE0B3FFC-7F24-45FC-A4EF-5C351410E245}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE0B3FFC-7F24-45FC-A4EF-5C351410E245}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
