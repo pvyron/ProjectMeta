@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProMe.Models", "ProMe.Model
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProMe.NativeApplication", "ProMe.NativeApplication\ProMe.NativeApplication.csproj", "{BE0B3FFC-7F24-45FC-A4EF-5C351410E245}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProMe.Shared", "ProMe.Shared\ProMe.Shared.csproj", "{7518DB92-CC0B-425D-A9A6-FE59AAA78AE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{BE0B3FFC-7F24-45FC-A4EF-5C351410E245}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE0B3FFC-7F24-45FC-A4EF-5C351410E245}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BE0B3FFC-7F24-45FC-A4EF-5C351410E245}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{7518DB92-CC0B-425D-A9A6-FE59AAA78AE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7518DB92-CC0B-425D-A9A6-FE59AAA78AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7518DB92-CC0B-425D-A9A6-FE59AAA78AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7518DB92-CC0B-425D-A9A6-FE59AAA78AE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +95,7 @@ Global
 		{2F1DB480-1671-446C-94E9-42A71955154A} = {9A1F5B60-0821-41B2-A6CF-28863D877358}
 		{AD267ECD-8576-4D4C-982B-D2B25BA1DC0B} = {9A1F5B60-0821-41B2-A6CF-28863D877358}
 		{33B4B992-5C14-4CC4-9556-87D7F7F94D73} = {9A1F5B60-0821-41B2-A6CF-28863D877358}
+		{7518DB92-CC0B-425D-A9A6-FE59AAA78AE2} = {9A1F5B60-0821-41B2-A6CF-28863D877358}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9AC62FE3-5BA8-46FF-9F8B-6875FC2E1163}

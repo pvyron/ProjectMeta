@@ -32,6 +32,7 @@ public static class Installers
         builder.Services.AddSingleton<IAuthenticationService, AuthenticationService>();
         builder.Services.AddScoped<IAuthorizationService, AuthorizationService>();
         builder.Services.AddSingleton<IEmailService, EmailService>();
+        builder.Services.AddScoped<IIdentityProvider, IdentityProvider>();
 
         //builder.Host.UseOrleansClient(client =>
         //{

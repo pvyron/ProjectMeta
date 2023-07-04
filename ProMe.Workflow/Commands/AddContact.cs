@@ -9,20 +9,21 @@ using ProMe.DataAccess;
 using ProMe.GrainInterfaces;
 using ProMe.DataAccess.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
+using ProMe.Abstractions;
 
 namespace ProMe.Workflow.Commands;
 public sealed record AddContact(string Name) : IRequest<IResult>;
 
 internal sealed class AddContactHandler : IRequestHandler<AddContact, IResult>
 {
-    //private readonly ProMeDBContext _proMeDB;
-    //private readonly IGrainFactory _grainFactory;
+    private readonly ProMeDBContext _proMeDB;
+    private readonly IIdentityProvider _identityProvider;
 
-    //public AddContactHandler(ProMeDBContext proMeDB, IGrainFactory grainFactory)
-    //{
-    //    _proMeDB = proMeDB;
-    //    _grainFactory = grainFactory;
-    //}
+    public AddContactHandler(ProMeDBContext proMeDB, IIdentityProvider identityProvider)
+    {
+        _proMeDB = proMeDB;
+        _identityProvider = identityProvider;
+    }
 
     public async Task<IResult> Handle(AddContact request, CancellationToken cancellationToken)
     {
@@ -40,6 +41,6 @@ internal sealed class AddContactHandler : IRequestHandler<AddContact, IResult>
         //await contactGrain.YourNameIs(request.Name);
 
         //return Results.Ok(new { name = await contactGrain.SayYourName() });
-        return Results.Ok();
+        return Results.Ok(new { name = request.Name, user = _identityProvider.UserId});
     }
 }

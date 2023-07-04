@@ -1,6 +1,7 @@
 ﻿@page "/"
 @using System.Diagnostics;
 @using Microsoft.AspNetCore.Authorization
+@using ProMe.NativeApplication.Services;
 @attribute [Authorize]
 
 <PageTitle>Project Meta</PageTitle>
@@ -19,7 +20,7 @@
         </MudItem>
         <MudItem xs="6">
             <MudContainer Class="d-flex flex-column align-center justify-center">
-                <MudButton Style="@($"max-height: 250px;min-height:150px;color:{Colors.Shades.White}")" Variant="Variant.Filled">
+                <MudButton Style="@($"max-height: 250px;min-height:150px;color:{Colors.Shades.White}")" Variant="Variant.Filled" OnClick="onClicked">
                     <MudContainer Class="d-flex flex-column align-center justify-center">
                         <MudIcon Style="@($"color:{Colors.Shades.Black}")" Icon="@Icons.Material.Sharp.PersonSearch" Size="Size.Large" />
                         <MudText Style="@($"color:{Colors.Shades.Black}")" Typo="Typo.h5" Align="Align.Center">Αναζήτηση</MudText>
@@ -33,8 +34,11 @@
 </MudContainer>
 
 @code{
-    void onClicked()
+    @inject IdentityAuthenticationStateProvider authState;
+    async ValueTask onClicked()
     {
+        await authState.Logout();
+
         Debug.WriteLine("Hey");
     }
-            }
+}

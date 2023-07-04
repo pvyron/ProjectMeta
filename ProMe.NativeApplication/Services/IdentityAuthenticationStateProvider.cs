@@ -45,7 +45,7 @@ public class IdentityAuthenticationStateProvider : AuthenticationStateProvider
 
         if (!(result?.IsSuccessStatusCode ?? false))
         {
-            Debug.WriteLine(result.Content.ReadAsStringAsync());
+            Debug.WriteLine(await result.Content.ReadAsStringAsync());
         }
         else
         {

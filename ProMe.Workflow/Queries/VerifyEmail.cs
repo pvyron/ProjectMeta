@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using ProMe.DataAccess;
 using ProMe.DataAccess.Models;
+using ProMe.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,8 +35,8 @@ public sealed class VerifyEmailHandler : IRequestHandler<VerifyEmail, IResult>
         if (soup.Length != 2)
             return Results.NotFound();
 
-        var part1Bytes = Convert.FromBase64String(soup[0]);
-        var part2Bytes = Convert.FromBase64String(soup[1]);
+        var part1Bytes = Convert.FromBase64String(soup[0].FromBase64Url());
+        var part2Bytes = Convert.FromBase64String(soup[1].FromBase64Url());
 
         try
         {

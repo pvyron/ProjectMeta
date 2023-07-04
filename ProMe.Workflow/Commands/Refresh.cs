@@ -19,7 +19,7 @@ public sealed class RefreshValidator : AbstractValidator<Refresh>
     public RefreshValidator()
     {
         RuleFor(x => x.RefreshToken).NotEmpty();
-        RuleFor(x => x.AccessToken).Must(x => x.ToUpper().StartsWith("BEARER "));
+        RuleFor(x => x.AccessToken).Must(x => x.StartsWith("bearer ", StringComparison.OrdinalIgnoreCase));
     }
 }
 

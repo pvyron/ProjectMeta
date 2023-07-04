@@ -31,7 +31,12 @@ public partial class Login
             return;
         }
 
-        await _authenticationStateProvider.
+        await _authenticationStateProvider.Login(new LoginCredentials
+        {
+            Email = loginModel.Email,
+            Password = loginModel.Password,
+            RememberMe = true
+        });
     }
 
 

@@ -16,6 +16,7 @@
 	<ProjectReference Include="..\ProMe.DataAccess\ProMe.DataAccess.csproj" />
 	<ProjectReference Include="..\ProMe.GrainInterfaces\ProMe.GrainInterfaces.csproj" />
 	<ProjectReference Include="..\ProMe.Models\ProMe.Models.csproj" />
+	<ProjectReference Include="..\ProMe.Shared\ProMe.Shared.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
