@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentValidation;
+﻿using FluentValidation;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using ProMe.NativeApplication.Services;
@@ -12,7 +7,7 @@ namespace ProMe.NativeApplication.Pages;
 
 public partial class Login
 {
-    [Inject] 
+    [Inject]
     ISnackbar Snackbar { get; set; }
 
     [Inject]

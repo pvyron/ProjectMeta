@@ -1,7 +1,6 @@
-﻿using ObjCRuntime;
-using UIKit;
+﻿using UIKit;
 
-namespace ProMe.NativeApplication;
+namespace ProMe.NativeApplication.Platforms.MacCatalyst;
 public class Program
 {
     // This is the main entry point of the application.

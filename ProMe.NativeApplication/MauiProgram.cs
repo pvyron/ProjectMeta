@@ -1,10 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
-using ProMe.NativeApplication.Data;
+﻿using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.Extensions.Logging;
 using MudBlazor.Services;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.AspNetCore.Components.Authorization;
+using ProMe.NativeApplication.Data;
 using ProMe.NativeApplication.Services;
-using System.Security.Claims;
 
 namespace ProMe.NativeApplication;
 public static class MauiProgram
@@ -23,7 +21,7 @@ public static class MauiProgram
         builder.Services.AddMudServices();
 #if DEBUG
         builder.Services.AddBlazorWebViewDeveloperTools();
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
         builder.Services.AddSingleton<WeatherForecastService>();

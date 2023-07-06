@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace ProMe.NativeApplication;
+namespace ProMe.NativeApplication.Platforms.MacCatalyst;
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate
 {

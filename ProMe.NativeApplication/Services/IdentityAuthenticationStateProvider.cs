@@ -1,14 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components.Authorization;
 using ProMe.ApiContracts.Auth;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Http.Json;
 using System.Security.Claims;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace ProMe.NativeApplication.Services;
 public class IdentityAuthenticationStateProvider : AuthenticationStateProvider
@@ -34,13 +29,13 @@ public class IdentityAuthenticationStateProvider : AuthenticationStateProvider
     public async Task Login(LoginCredentials loginCredentials)
     {
         var result = await _apiClient.PostAsJsonAsync(
-            API_LOGIN_URL, 
+            API_LOGIN_URL,
             new LoginRequestModel
             {
                 Email = loginCredentials.Email,
                 Password = loginCredentials.Password,
                 RememberMe = loginCredentials.RememberMe,
-            }, 
+            },
             _jsonSerializerOptions);
 
         if (!(result?.IsSuccessStatusCode ?? false))
