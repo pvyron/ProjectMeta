@@ -1,13 +1,6 @@
-﻿using LanguageExt.ClassInstances.Pred;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using ProMe.Abstractions;
-using ProMe.DataAccess;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProMe.Workflow.Services;
 internal sealed class AuthenticationService : IAuthenticationService

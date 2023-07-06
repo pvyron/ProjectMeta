@@ -4,11 +4,6 @@ using Microsoft.AspNetCore.Http;
 using ProMe.Abstractions;
 using ProMe.ApiContracts.Auth;
 using ProMe.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProMe.Workflow.Commands;
 

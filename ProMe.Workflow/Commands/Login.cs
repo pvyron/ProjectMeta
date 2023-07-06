@@ -1,25 +1,11 @@
-﻿using Azure.Data.Tables;
-using FluentValidation;
+﻿using FluentValidation;
 using LanguageExt;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 using ProMe.Abstractions;
 using ProMe.ApiContracts.Auth;
 using ProMe.DataAccess;
-using ProMe.DataAccess.Models;
-using ProMe.Workflow.Models;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProMe.Workflow.Commands;
 public record Login(LoginRequestModel Model) : IRequest<IResult>;
@@ -44,7 +30,7 @@ internal sealed class LoginHandler : IRequestHandler<Login, IResult>
         _proMeDB = proMeDB;
         _authenticationService = authenticationService;
         _authorizationService = authorizationService;
-        
+
     }
 
     public async Task<IResult> Handle(Login request, CancellationToken cancellationToken)
@@ -65,7 +51,7 @@ internal sealed class LoginHandler : IRequestHandler<Login, IResult>
 
         var bearer = await _authorizationService.GenerateAccessTokenForUser(userData.Id);
         var refresh = await _authorizationService.GenerateRefreshTokenForUser(userData.Id);
-        
+
         return Results.Ok(new LoginResponseModel
         {
             BearerToken = bearer,

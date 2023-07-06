@@ -1,22 +1,15 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using FluentValidation;
+using MediatR;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using ProMe.Abstractions;
 using ProMe.DataAccess;
-using ProMe.Workflow.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentValidation;
 using ProMe.Workflow.Commands;
+using ProMe.Workflow.Services;
 using ProMe.Workflow.Validation;
-using MediatR;
-using Microsoft.AspNetCore.Http;
-using ProMe.Workflow.Models;
 
 namespace ProMe.Workflow;
 public static class Installers

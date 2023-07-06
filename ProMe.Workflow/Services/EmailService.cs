@@ -2,12 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using MimeKit;
 using ProMe.Abstractions;
-using ProMe.Workflow.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ProMe.Workflow.Services;
 internal class EmailService : IEmailService

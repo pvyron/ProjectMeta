@@ -35,7 +35,7 @@
 
 @code{
     @inject IdentityAuthenticationStateProvider authState;
-    async ValueTask onClicked()
+    async void onClicked()
     {
         await authState.Logout();
 

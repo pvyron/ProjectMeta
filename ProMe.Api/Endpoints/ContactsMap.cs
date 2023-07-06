@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using ProMe.ApiContracts.Auth;
 using ProMe.Workflow.Commands;
 using ProMe.Workflow.Filters;
 

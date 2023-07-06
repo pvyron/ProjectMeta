@@ -1,18 +1,12 @@
 ﻿using Azure.Data.Tables;
-using LanguageExt.Pretty;
 using MediatR;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using ProMe.DataAccess;
 using ProMe.DataAccess.Models;
 using ProMe.Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ProMe.Workflow.Queries;
 public sealed record VerifyEmail(string VerificationSoup) : IRequest<IResult>;

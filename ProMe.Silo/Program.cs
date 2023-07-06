@@ -25,7 +25,7 @@ static async Task<IHost> StartSiloAsync()
             silo.UseLocalhostClustering()
                 .AddAzureTableGrainStorage(
                     name: "proMe",
-                    configureOptions: options =>{ options.ConfigureTableServiceClient(Environment.GetEnvironmentVariable("ConnectionStrings:TableStorage")); })
+                    configureOptions: options => { options.ConfigureTableServiceClient(Environment.GetEnvironmentVariable("ConnectionStrings:TableStorage")); })
                 .ConfigureLogging(logging => logging.AddConsole());
         });
 

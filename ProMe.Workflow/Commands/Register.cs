@@ -4,18 +4,11 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
 using ProMe.Abstractions;
 using ProMe.ApiContracts.Auth;
 using ProMe.DataAccess;
 using ProMe.DataAccess.Models;
 using ProMe.Workflow.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProMe.Workflow.Commands;
 public sealed record Register(RegisterRequestModel Model) : IRequest<IResult>;

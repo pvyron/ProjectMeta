@@ -1,19 +1,12 @@
-﻿using Azure.Core;
-using Azure.Data.Tables;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Azure.Data.Tables;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json.Linq;
 using ProMe.Abstractions;
 using ProMe.DataAccess.Models;
 using ProMe.Models;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ProMe.Workflow.Services;
 internal class AuthorizationService : IAuthorizationService

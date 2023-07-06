@@ -3,7 +3,6 @@ using Microsoft.OpenApi.Models;
 using ProMe.Api.Endpoints;
 using ProMe.Workflow;
 using ProMe.Workflow.Commands;
-using ProMe.Workflow.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,7 +46,7 @@ services.AddEndpointsApiExplorer()
         configuration.RegisterServicesFromAssembly(typeof(Installers).Assembly);
         configuration.AddValidation(services);
     });
-    
+
 
 var app = builder.Build();
 
