@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Components.Authorization;
+﻿using LanguageExt;
+using LanguageExt.Common;
+using Microsoft.AspNetCore.Components.Authorization;
 using ProMe.ApiContracts.Auth;
+using ProMe.NativeApplication.Models.Exceptions;
 using System.Diagnostics;
 using System.Net.Http.Json;
 using System.Security.Claims;
@@ -26,9 +29,11 @@ public class IdentityAuthenticationStateProvider : AuthenticationStateProvider
         _jsonSerializerOptions = jsonSerializerOptions;
     }
 
-    public async Task Login(LoginCredentials loginCredentials)
+    public async ValueTask<Result<Unit>> Login(LoginCredentials loginCredentials)
     {
-        var result = await _apiClient.PostAsJsonAsync(
+        try
+        {
+            var result = await _apiClient.PostAsJsonAsync(
             API_LOGIN_URL,
             new LoginRequestModel
             {
@@ -38,35 +43,58 @@ public class IdentityAuthenticationStateProvider : AuthenticationStateProvider
             },
             _jsonSerializerOptions);
 
-        if (!(result?.IsSuccessStatusCode ?? false))
-        {
-            Debug.WriteLine(await result.Content.ReadAsStringAsync());
-        }
-        else
-        {
-            var response = await result.Content.ReadFromJsonAsync<LoginResponseModel>(_jsonSerializerOptions);
-
-            if (response is null)
+            if (!(result?.IsSuccessStatusCode ?? false))
             {
-
+                return new Result<Unit>(new AuthenticationFailedException($"{result.ReasonPhrase}: {await result.Content.ReadAsStringAsync()}"));
             }
+            else
+            {
+                var response = await result.Content.ReadFromJsonAsync<LoginResponseModel>(_jsonSerializerOptions);
 
-            await Login(new AuthorizationData { AccessToken = response.BearerToken, RefreshToken = response.RefreshToken });
+                if (response is null)
+                {
+                    return new Result<Unit>(new AuthenticationFailedException("Something weird"));
+                }
+
+                return await Login(new AuthorizationData { AccessToken = response.BearerToken, RefreshToken = response.RefreshToken });
+            }
+        }
+        catch (Exception ex)
+        {
+            return new Result<Unit>(ex);
         }
     }
 
-    public async Task Login(AuthorizationData authorizationData)
+    public async ValueTask<Result<Unit>> Login(AuthorizationData authorizationData)
     {
-        await SecureStorage.SetAsync(ACCESS_TOKEN_STORAGE_KEY, authorizationData.AccessToken);
-        await SecureStorage.SetAsync(REFRESH_TOKEN_STORAGE_KEY, authorizationData.RefreshToken);
-        NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+        try
+        {
+            await SecureStorage.SetAsync(ACCESS_TOKEN_STORAGE_KEY, authorizationData.AccessToken);
+            await SecureStorage.SetAsync(REFRESH_TOKEN_STORAGE_KEY, authorizationData.RefreshToken);
+            NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+
+            return Unit.Default;
+        }
+        catch (Exception ex)
+        {
+            return new Result<Unit>(ex);
+        }
     }
 
-    public async Task Logout()
+    public async ValueTask<Result<Unit>> Logout()
     {
-        SecureStorage.Remove(ACCESS_TOKEN_STORAGE_KEY);
-        SecureStorage.Remove(REFRESH_TOKEN_STORAGE_KEY);
-        NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+        try
+        {
+            SecureStorage.Remove(ACCESS_TOKEN_STORAGE_KEY);
+            SecureStorage.Remove(REFRESH_TOKEN_STORAGE_KEY);
+            NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+
+            return Unit.Default;
+        }
+        catch (Exception ex)
+        {
+            return new Result<Unit>(ex);
+        }
     }
 
     public override async Task<AuthenticationState> GetAuthenticationStateAsync()

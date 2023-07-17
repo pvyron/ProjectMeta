@@ -24,16 +24,16 @@ public sealed class VerifyEmailHandler : IRequestHandler<VerifyEmail, IResult>
 
     public async Task<IResult> Handle(VerifyEmail request, CancellationToken cancellationToken)
     {
-        var soup = request.VerificationSoup.Split('.');
-
-        if (soup.Length != 2)
-            return Results.NotFound();
-
-        var part1Bytes = Convert.FromBase64String(soup[0].FromBase64Url());
-        var part2Bytes = Convert.FromBase64String(soup[1].FromBase64Url());
-
         try
         {
+            var soup = request.VerificationSoup.Split('.');
+
+            if (soup.Length != 2)
+                return Results.NotFound();
+
+            var part1Bytes = Convert.FromBase64String(soup[0].FromBase64Url());
+            var part2Bytes = Convert.FromBase64String(soup[1].FromBase64Url());
+
             var key = new Guid(part1Bytes);
             var email = Encoding.ASCII.GetString(part2Bytes);
 
@@ -42,7 +42,7 @@ public sealed class VerifyEmailHandler : IRequestHandler<VerifyEmail, IResult>
             if (tableEntity.Value is null || tableEntity.Value.Expiration < DateTime.UtcNow)
                 return Results.BadRequest("Your key may be expired");
 
-            var user = await _proMeDB.Users.FirstAsync(u => u.Email == email, cancellationToken);
+            var user = await _proMeDB.Users.FirstOrDefaultAsync(u => u.Email == email, cancellationToken);
 
             if (user is null)
                 return Results.BadRequest("Your key may be expired, please register again");

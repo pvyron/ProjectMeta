@@ -42,3 +42,10 @@ public class BearerAuthorizationFilter : IEndpointFilter
         return await next(context);
     }
 }
+
+public enum Pew
+{
+    alo,
+    pew,
+    re
+}

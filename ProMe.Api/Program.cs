@@ -17,6 +17,8 @@ services.AddEndpointsApiExplorer()
     .AddSwaggerGen(c =>
     {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "Test01", Version = "v1" });
+        
+        // User authentication
         c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
         {
             Name = "Authorization",
@@ -40,6 +42,30 @@ services.AddEndpointsApiExplorer()
                 Array.Empty<string>()
             }
         });
+
+        // Api key authentication
+        c.AddSecurityDefinition("ApiKey", new OpenApiSecurityScheme()
+        {
+            Name = "x-api-key",
+            Type = SecuritySchemeType.ApiKey,
+            Scheme = "ApiKey",
+            In = ParameterLocation.Header,
+            Description = "Api key Authorization header for admin or campaing manager"
+        });
+        c.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "ApiKey"
+                    }
+                },
+                Array.Empty<string>()
+            }
+        });
     })
     .AddMediatR(configuration =>
     {
@@ -57,13 +83,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapGet("/", (IMediator mediator, string name) =>
-{
-    return mediator.Send(new AddContact(name));
-});
+app.MapGet("/", () => "I'm not the droid that you are looking for");
 
 app.MapAuth();
 app.MapContacts();
+app.MapCampaigns();
 
 app.UseHttpsRedirection();
 

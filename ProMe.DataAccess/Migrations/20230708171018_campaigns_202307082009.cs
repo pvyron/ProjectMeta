@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace ProMe.DataAccess.Migrations
 {
-    public partial class FullAddressFullTextIndex : Migration
+    /// <inheritdoc />
+    public partial class campaigns_202307082009 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +16,7 @@ namespace ProMe.DataAccess.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            string sql = "DROP FULLTEXT INDEX on dbo.Addresses;\r\nDROP FULLTEXT CATALOG FTCAddress;";
+            string sql = "DROP FULLTEXT INDEX on dbo.Contacts;\r\nDROP FULLTEXT CATALOG FTCContacts;";
             migrationBuilder.Sql(sql, true);
         }
     }

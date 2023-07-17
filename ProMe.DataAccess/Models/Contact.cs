@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProMe.DataAccess.Models;
 public class Contact
@@ -12,4 +13,11 @@ public class Contact
     public string? PhoneNumber { get; set; }
     [MaxLength(254)]
     public string? Email { get; set; }
+
+    [Required]
+    [ForeignKey(nameof(User))]
+    public Guid UserId { get; set; }
+    public User? User { get; set; }
+
+    public ICollection<Campaign> Campaigns { get; set; } = new HashSet<Campaign>();
 }

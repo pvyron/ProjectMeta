@@ -27,7 +27,12 @@ internal class AuthorizationService : IAuthorizationService
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(new[] { new Claim("UserId", userId.ToString()) }),
+#if RELEASE
             Expires = DateTime.UtcNow.AddMinutes(15),
+#endif
+#if DEBUG
+            Expires = DateTime.UtcNow.AddHours(15),
+#endif
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)
         };
         var token = tokenHandler.CreateToken(tokenDescriptor);

@@ -12,9 +12,10 @@ using ProMe.DataAccess;
 namespace ProMe.DataAccess.Migrations
 {
     [DbContext(typeof(ProMeDBContext))]
-    [Migration("20230608214930_InitialCreate_20230609")]
-    partial class InitialCreate_20230609
+    [Migration("20230708171018_campaigns_202307082009")]
+    partial class campaigns_202307082009
     {
+        /// <inheritdoc />
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,28 +27,28 @@ namespace ProMe.DataAccess.Migrations
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("ProMe.DataAccess.Models.Contact", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+            {
+                b.Property<Guid>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Email")
-                        .HasMaxLength(254)
-                        .HasColumnType("nvarchar(254)");
+                b.Property<string>("Email")
+                    .HasMaxLength(254)
+                    .HasColumnType("nvarchar(254)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(350)
-                        .HasColumnType("nvarchar(350)");
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasMaxLength(350)
+                    .HasColumnType("nvarchar(350)");
 
-                    b.Property<string>("PhoneNumber")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                b.Property<string>("PhoneNumber")
+                    .HasMaxLength(25)
+                    .HasColumnType("nvarchar(25)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Contacts");
-                });
+                b.ToTable("Contacts");
+            });
 #pragma warning restore 612, 618
         }
     }

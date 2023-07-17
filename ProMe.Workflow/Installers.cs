@@ -42,6 +42,13 @@ public static class Installers
             .AddValidation<Login>()
             .AddValidation<Refresh>();
 
+        configuration
+            .AddValidation<AddContact>()
+            .AddValidation<UpdateContact>();
+
+        configuration
+            .AddValidation<CreateCampaignManager>();
+
         services.AddValidatorsFromAssembly(typeof(Installers).Assembly);
 
         return configuration;

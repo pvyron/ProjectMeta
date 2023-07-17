@@ -1,5 +1,7 @@
 ﻿using FluentValidation;
+using LanguageExt;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Routing;
 using MudBlazor;
 using ProMe.NativeApplication.Services;
 
@@ -8,10 +10,13 @@ namespace ProMe.NativeApplication.Pages;
 public partial class Login
 {
     [Inject]
-    ISnackbar Snackbar { get; set; }
+    ISnackbar _snackbar { get; set; }
 
     [Inject]
     IdentityAuthenticationStateProvider _authenticationStateProvider { get; set; }
+
+    [Inject]
+    NavigationManager _navigationManager { get; set; }
 
     MudForm form;
     LoginModelFluentValidator loginValidator = new();
@@ -26,12 +31,24 @@ public partial class Login
             return;
         }
 
-        await _authenticationStateProvider.Login(new LoginCredentials
+        var result = await _authenticationStateProvider.Login(new LoginCredentials
         {
             Email = loginModel.Email,
             Password = loginModel.Password,
             RememberMe = true
         });
+
+        result.Match(
+            Succ =>
+            {
+                _navigationManager.NavigateTo("/");
+                return Unit.Default;
+            },
+            Fail =>
+            {
+                _snackbar.Add(Fail.Message, MudBlazor.Severity.Error);
+                return Unit.Default;
+            });
     }
 
 

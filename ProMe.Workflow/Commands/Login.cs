@@ -35,7 +35,7 @@ internal sealed class LoginHandler : IRequestHandler<Login, IResult>
 
     public async Task<IResult> Handle(Login request, CancellationToken cancellationToken)
     {
-        var userData = await _proMeDB.Users.AsNoTracking().Where(u => u.Email == request.Model.Email).Select(u => new { u.Id, u.Key, u.Salt, u.Verified }).FirstAsync(cancellationToken: cancellationToken);
+        var userData = await _proMeDB.Users.AsNoTracking().Where(u => u.Email == request.Model.Email).Select(u => new { u.Id, u.Key, u.Salt, u.Verified }).FirstOrDefaultAsync(cancellationToken);
 
         if (userData is null || !userData.Verified)
         {

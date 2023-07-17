@@ -62,7 +62,7 @@ internal sealed class RegisterHandler : IRequestHandler<Register, IResult>
                 Expiration = DateTimeOffset.UtcNow.AddHours(1),
                 PartitionKey = user.Email,
                 RowKey = verificationId.ToString()
-            });
+            }, cancellationToken);
 
             return Results.Created($"/Profile/{(ShortGuid)user.Id}", null);
         }

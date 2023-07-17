@@ -24,7 +24,10 @@ public class User
     public DateTimeOffset LastPasswordReset { get; set; } = DateTimeOffset.UtcNow;
     [Required]
     public bool Verified { get; set; } = false;
-    [ForeignKey(nameof(Contact))]
-    public Guid? ContactId { get; set; }
-    public Contact? Contact { get; set; }
+
+    //[ForeignKey(nameof(Contact))]
+    //public Guid? ContactId { get; set; }
+    //public virtual Contact? Contact { get; set; }
+
+    public virtual ICollection<Contact> Contacts { get; set; } = new HashSet<Contact>();
 }

@@ -1,1 +1,2 @@
-﻿delete from Users
+﻿select *
+from contacts

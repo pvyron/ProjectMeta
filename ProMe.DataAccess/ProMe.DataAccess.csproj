@@ -7,6 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20230608214728_InitialCreate.cs" />
+    <Compile Remove="Migrations\20230608214728_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20230608214930_InitialCreate_20230609.cs" />
+    <Compile Remove="Migrations\20230608214930_InitialCreate_20230609.Designer.cs" />
+    <Compile Remove="Migrations\20230608224424_FullAddressFullTextIndex.cs" />
+    <Compile Remove="Migrations\20230608224424_FullAddressFullTextIndex.Designer.cs" />
+    <Compile Remove="Migrations\20230610213552_user_0035.cs" />
+    <Compile Remove="Migrations\20230610213552_user_0035.Designer.cs" />
+    <Compile Remove="Migrations\20230610224311_user_0142.cs" />
+    <Compile Remove="Migrations\20230610224311_user_0142.Designer.cs" />
+    <Compile Remove="Migrations\20230611002927_user_0329.cs" />
+    <Compile Remove="Migrations\20230611002927_user_0329.Designer.cs" />
+    <Compile Remove="Migrations\20230706224335_contact_update_202307070142.cs" />
+    <Compile Remove="Migrations\20230706224335_contact_update_202307070142.Designer.cs" />
+    <Compile Remove="Migrations\20230708151652_campaign_manager_202307081815.cs" />
+    <Compile Remove="Migrations\20230708151652_campaign_manager_202307081815.Designer.cs" />
+    <Compile Remove="Migrations\ProMeDBContextModelSnapshot.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Azure.Data.Tables" Version="12.8.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="8.0.0-preview.4.23259.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0-preview.4.23259.3" />
@@ -14,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Migrations\" />
     <Folder Include="Queries\" />
   </ItemGroup>
 
